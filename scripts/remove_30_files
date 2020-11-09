@@ -1,0 +1,34 @@
+# Create entries to fill 1 32-entry block
+# ('.' and '..' first two entries)
+
+cd /bigdir32
+rm file_01
+rm file_02
+rm file_03
+rm file_04
+rm file_05
+rm file_06
+rm file_07
+rm file_08
+rm file_09
+rm file_10
+rm file_11
+rm file_12
+rm file_13
+rm file_14
+rm file_15
+rm file_16
+rm file_17
+rm file_18
+rm file_19
+rm file_20
+rm file_21
+rm file_22
+rm file_23
+rm file_24
+rm file_25
+rm file_26
+rm file_27
+rm file_28
+rm file_29
+rm file_30

@@ -1,0 +1,35 @@
+# Create entries to fill 1 32-entry block
+# ('.' and '..' first two entries)
+
+mkdir /bigdir32
+cd /bigdir32
+touch file_01
+touch file_02
+touch file_03
+touch file_04
+touch file_05
+touch file_06
+touch file_07
+touch file_08
+touch file_09
+touch file_10
+touch file_11
+touch file_12
+touch file_13
+touch file_14
+touch file_15
+touch file_16
+touch file_17
+touch file_18
+touch file_19
+touch file_20
+touch file_21
+touch file_22
+touch file_23
+touch file_24
+touch file_25
+touch file_26
+touch file_27
+touch file_28
+touch file_29
+touch file_30

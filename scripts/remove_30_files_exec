@@ -1,0 +1,6 @@
+# Removes entries that fill 1 32-entry block
+# using printf shell script commands
+# ('.' and '..' first two entries)
+
+cd /bigdir32e
+! printf 'rm file_%02d\n' {1..30}

@@ -1,0 +1,7 @@
+# Create entries to fill 1 32-entry block
+# using printf shell script commands
+# ('.' and '..' first two entries)
+
+mkdir /bigdir32e
+cd /bigdir32e
+! printf 'touch file_%02d\n' {1..30}

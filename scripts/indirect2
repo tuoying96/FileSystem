@@ -1,0 +1,4 @@
+# This file runs indirect1
+> entering indirect2
+run scripts/indirect1
+> exiting indirect2
