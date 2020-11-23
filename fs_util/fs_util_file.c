@@ -608,3 +608,9 @@ int do_unlink(int dir_inum, const char* leaf) {
 
     return 0;
 }
+
+
+int do_link(int src_inum, const char* dir, const char* leaf)
+{
+    return 0;
+}
