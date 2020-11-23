@@ -307,4 +307,22 @@ int fs_utime(const char* path, struct utimbuf *ut);
  */
 int fs_write(const char* path, const char* buf, size_t len,
 		     off_t offset, struct fuse_file_info* fi);
+
+
+
+/**
+ * created a hard link for an existing file.
+ 
+ * Errors:
+ *   -ENOENT   - source file or directory does not exist
+ *   -ENOTDIR  - component of source or target path not a directory
+ *   -EEXIST   - destination already exists
+ *
+ * @param src_path the source path
+ * @param dst_path the destination path 
+ * @return 0 if successful, or -error number
+ */
+int fs_link(const char* src_path, const char* dst_path);
+
+
 #endif /* FS_OPS_H_ */
