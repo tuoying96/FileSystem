@@ -33,6 +33,5 @@ struct fuse_operations fs_ops = {
     .unlink = fs_unlink,
     .utime = fs_utime,
     .write = fs_write,
+    .link = fs_link,
 };
-
-
