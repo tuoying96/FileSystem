@@ -176,4 +176,11 @@ int do_mkentry(int dir_inum, const char* leaf, mode_t mode, unsigned ftype);
  */
 int do_unlink(int dir_inum, const char* leaf);
 
+
+int do_link(int src_inum, const char* dir, const char* leaf);
+
+int increment_link_count(int inum);
+
+int decrement_link_count(int inum);
+
 #endif /* FS_UTIL_FILE_H_ */
