@@ -612,5 +612,65 @@ int do_unlink(int dir_inum, const char* leaf) {
 
 int do_link(int src_inum, const char* dir, const char* leaf)
 {
+    char* new_path = (char*)malloc(strlen(dir) + strlen(leaf) + 1);
+    sprintf(new_path, "%s%s", dir, leaf);
+
+    int dir_inum = get_inode_of_path_dir(new_path, leaf);
+    // error getting directory inode
+    if (dir_inum < 0) {
+        return dir_inum;
+    }
+
+    // make sure entry does not exist in directory
+    int blkno;
+    char buf[FS_BLOCK_SIZE];
+	if (get_dir_entry_block(dir_inum, buf, &blkno, leaf) >= 0) {
+		return -EEXIST;	// leaf already exists
+	}
+
+	// find free directory entry
+	int entno = get_dir_free_entry_block(dir_inum, buf, &blkno);
+	if (entno < 0) {
+		return -ENOSPC;	// no free directory entry
+    }
+
+	// set directory entry information
+     increment_link_count(src_inum);
+	struct fs_dirent *de = (void*)buf;
+	set_dir_entry(&de[entno], src_inum, leaf);
+
+    free(new_path);
     return 0;
+}
+
+int increment_link_count(int inum)
+{
+     /* get pointer to file inode */
+    struct fs_inode *din = &fs.inodes[inum];
+    if (S_ISDIR(din->mode)) 
+    {
+        return -EISDIR;	
+    }
+    din->nlink++;
+}
+
+int decrement_link_count(int inum)
+{
+     /* get pointer to file inode */
+    struct fs_inode *din = &fs.inodes[inum];
+    if (S_ISDIR(din->mode)) 
+    {
+        return -EISDIR;	
+    }
+
+    if (din->nlink > 0)
+    {
+        din->nlink--;
+    }
+
+    if (din->nlink == 0)
+    {
+        // free unlinked file inode
+        return_inode(inum);
+    }
 }
